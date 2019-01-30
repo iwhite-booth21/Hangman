@@ -1,12 +1,24 @@
 #import the time modeule
 import time
 
+#importing the random module
+import random
+
+#list of words
+words = ["Ice", "Strawberry", "Heaven", "Paris", "Exodus", "Circus", "Devilish", "Divine","Ultimatum"]
+
+#amount of words
+y = 0
+for x in words:
+    y = y + 1
+
 #welcoming the user
 name = input("What is your name?")
 
 print ("Hello , " + name, "Time to play Hangman!")
 
-print:" "
+print:()
+
 
 #wait for 1 second
 time.sleep(1)
@@ -15,7 +27,7 @@ print("Start Guessing...")
 time.sleep(0.5)
 
 #here we set the secret word
-word = "secret"
+word = words[random.randint(0,y-1)]
 
 #create an variable with an empty value
 guesses = ''
@@ -52,8 +64,8 @@ while turns > 0:
         #if failed is equal to zero
 
         #print you won the game
-    if falied == 0:
-        print("You Won")
+    if failed == 0:
+        print("You Won " +str(10-turns)+ "wrong guesses.")
 
     #exit the file
         break
@@ -61,7 +73,7 @@ while turns > 0:
     print
 
     #Ask the user go guess a character
-    guess = user_input("guess a character:")
+    guess = input("guess a character:").lower()
 
     #set the players guess to guesses
     guesses += guess
