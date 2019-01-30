@@ -1,98 +1,102 @@
-#import the time modeule
+# import the time modeule
 import time
 
-#importing the random module
+# importing the random module
 import random
 
-#list of words
-words = ["Ice", "Strawberry", "Heaven", "Paris", "Exodus", "Circus", "Devilish", "Divine","Ultimatum"]
+# list of words
+words = ["ice", "strawberry", "heaven", "paris", "exodus", "circus", "devilish", "divine", "ultimatum"]
 
-#amount of words
+# Save underscore for easier use
+underScore = "_ "
+
+# amount of words
 y = 0
 for x in words:
     y = y + 1
 
-#welcoming the user
+# welcoming the user
 name = input("What is your name?")
 
-print ("Hello , " + name, "Time to play Hangman!")
+print("Hello, " + name + " time to play Hangman!")
 
-print:()
-
-
-#wait for 1 second
+# wait for 1 second
 time.sleep(1)
 
 print("Start Guessing...")
 time.sleep(0.5)
 
-#here we set the secret word
+# here we set the secret word
 word = words[random.randint(0,y-1)]
 
-#create an variable with an empty value
+print (word)
+# create an variable with an empty value
 guesses = ''
 
-#determine the number of turns
+# determine the number of turns
 turns = 10
 
-#Create a While loop
+# Create a While loop
 
-#Check if the turns are more than zero
+# Check if the turns are more than zero
 
 while turns > 0:
 
-    #make a counter that starts with zero
+    # make a counter that starts with zero
     failed = 0
 
-   #for char in secret_word
+    # Variable to store user's progress
+    progress = ""
+
+    # for char in secret_word
     for char in word:
 
-     #to see if the charcter is in the players guess
-      if char in guesses:
+        # to see if the charcter is in the players guess
+        if char in guesses:
 
-        #print thrn out the character
-        print(char)
+            # print thrn out the character
+            progress += char
 
-    else:
+        else:
 
-        #if not found, print a dash
-        print("_",)
+            # if not found, print a dash
+            progress += underScore
 
-        #and increase the failed counter with one
-        failed += 1
+            # and increase the failed counter with one
+            failed += 1
 
-        #if failed is equal to zero
+            # if failed is equal to zero
 
-        #print you won the game
+    # print you won the game
     if failed == 0:
-        print("You Won " +str(10-turns)+ "wrong guesses.")
+        print("You Won " +str(10-turns)+ " wrong guesses.")
 
-    #exit the file
+    # exit the file
         break
 
-    print
+    print(progress)
+    print("")
+    # Ask the user go guess a character
+    guess = input("Guess a character:")
 
-    #Ask the user go guess a character
-    guess = input("guess a character:").lower()
-
-    #set the players guess to guesses
+    # set the players guess to guesses
     guesses += guess
 
-    #if the word is not found
+    # if the word is not found
     if guess not in word:
 
-        #Turn the counter down
+        # Turn the counter down
         turns -= 1
 
-        #print wrong
+        # print wrong
         print("Wrong")
 
-        #how many turns
+        # how many turns
         print("You have", + turns, 'more guesses')
-
-        #if turns reach zero
+        print(word)
+        # if turns reach zero
         if turns == 0:
 
-            #print you lose
+            # print you lose
             print("You LOSE")
 
